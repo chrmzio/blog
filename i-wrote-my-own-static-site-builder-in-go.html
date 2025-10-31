@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I wrote my own static site builder in Go</title>
+    <meta name="description" content="I wrote my own static site builder in Go">
+    <meta name="author" content="Jan Charamza">
+    <meta name="date" content="2025-10-29T20:32:23&#43;01:00">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-blog-post">
+    
+    
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="wallpapers/momo-smoking-cyberpunk-city-last-origin-pixel-moewalls-com.mp4" type="video/mp4">
+        
+    </video>
+    
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+
+    <nav class="menu">
+        <label for="menu-toggle" class="menu-button">☰</label>
+        <ul>
+            
+            <li><a href="index.html" class="nav-index">Index</a></li>
+            
+            <li><a href="projects.html" class="nav-projects">Projects</a></li>
+            
+            <li><a href="todo.html" class="nav-todo">Todo</a></li>
+            
+            <li><a href="contact.html" class="nav-contact">Contact</a></li>
+            
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <div class="post-meta">
+                Published on October 29, 2025
+                <div class="post-tags">
+                    <a href="tag-bib.html" class="tag">bib</a><a href="tag-init.html" class="tag">init</a><a href="tag-go.html" class="tag">go</a>
+                </div>
+            </div>
+            <h1 id="i-wrote-my-own-static-site-builder-in-go">I wrote my own static site builder in Go</h1>
+
+<p><strong>I know, another one!</strong></p>
+
+<p>I wanted to start learning <a href="https://go.dev" target="_blank">Go</a>, and I wished for a <em>stupid simple</em> static site builder that I’d understand inside out —
+so I wouldn’t spend hours digging through docs like I used to with <a href="https://gohugo.io" target="_blank">Hugo</a> or <a href="https://www.getzola.org" target="_blank">Zola</a>.
+Both are great tools, but they’re already full-grown, feature-rich beasts.</p>
+
+<p>Being a <strong>*covid-born software dev</strong>, I’ve always cared more about <strong>themes</strong> first.
+My usual workflow looked something like this: find a theme I like (usually the most complicated one), tweak it endlessly, never write a single post, delete everything, and start again — either with another theme or a different tool.</p>
+
+<p>Not this time. No, no, no.
+This time I’m building my own tool — one I fully understand — and I’m finally going to start writing articles.</p>
+
+<p>*<em>A transparent editor and preferably live-wallpaper-demanding coder.</em></p>
+
+<h2 id="a-pure-static-site-builder-based-on-my-workflow">A pure static site builder based on my workflow</h2>
+
+<p>Here’s what I had in mind for the first version:</p>
+
+<ul>
+<li><p><code>md</code> → <code>html</code></p></li>
+
+<li><p>pure static sites</p></li>
+
+<li><p>no (I repeat, <strong>no</strong>) JavaScript</p></li>
+
+<li><p>configurable themes</p></li>
+
+<li><p>a decent CLI with:</p>
+
+<ul>
+<li><code>blog init</code>, <code>post new</code>, <code>page new</code>, <code>build</code>, and <code>serve</code> commands to start with</li>
+</ul></li>
+
+<li><p>a slightly opinionated design (not too many options)</p></li>
+
+<li><p>mobile-first approach</p></li>
+
+<li><p>a very basic feature set:</p>
+
+<ul>
+<li>tag-based structure and search</li>
+<li>related/next post based on tags</li>
+</ul></li>
+
+<li><p>easy configuration — no more than 10 variables, please</p></li>
+</ul>
+
+<p>That’s supposed to be the starter pack. I’ll keep adding features gradually, but carefully.</p>
+
+<h3 id="written-in-go">Written in Go</h3>
+
+<p>The first language I ever learned was Java. My bootcamp was mostly Java, with a bit of C#.
+I still like it — and my first CLI app attempt was a little <a href="https://github.com/chrmzio/nof" target="_blank">Spring Shell project</a>.
+Development itself was fine, but building binaries and distributing them was a pain.
+Plus, Spring Shell is more suitable for long-running, REPL-style apps.</p>
+
+<p>At that time, I was just figuring out which language I wanted to use for building CLI tools.
+So I moved on and started looking into <a href="https://rust-lang.org" target="_blank">Rust</a>.
+I wrote a small CLI tool in Rust that connects to local or remote AI and works nicely with Helix — it takes selected text and fixes typos and grammar.
+But I’m kind of AI-allergic these days. Feels like LLMs steal some of the joy from software development, but that’s a <a href="llms-suck-the-fun-out-of-coding.html" target="_blank">story</a> for another day.</p>
+
+<p>I enjoyed Rust’s syntax and speed, but man — it’s a tough language.
+At least for me, at this stage.</p>
+
+<p>So, <a href="https://go.dev" target="_blank">Go</a> was the next choice. And maaaan, what a pleasant language!
+It builds insanely fast. I literally rebuild the project every time I notice something to fix while writing this article — and I build the blog alongside it.
+It doesn’t slow me down <em>at all</em>. Such a nice experience.</p>
+
+<p>This site builder is actually my <strong>second project in Go</strong>.
+The first one was a git-based forum CLI app using <a href="https://github.com/charmbracelet/bubbletea" target="_blank">Bubble Tea</a>.
+It’s a fun project — it taught me a few git tricks I had no idea existed.
+Basically, I use git and a bare repo as the “backend” and Bubble TUI as the “frontend,” to give it a forum-like feel.
+It’s still a work in progress, but I plan to finish it — I like the concept.</p>
+
+<p>So, dear beautiful people of the internet, let me introduce my little static site builder — <strong>bib</strong>.</p>
+
+<h3 id="bib-the-builder">Bib the builder</h3>
+
+<p>Don’t ask me where the name came from originally.
+Let’s just say it now stands for <strong>“blog I built”</strong>, okay?</p>
+
+<p>I’ll share the repo link once I clean it up a bit and finish the main refactor.
+Right now, Bib’s code is in that <em>“let’s just add this and move it into a separate file later”</em> stage.</p>
+
+<p>And as I’m writing this post, <strong>bib</strong> is already capable of:</p>
+
+<pre><code>❯ bib
+bib - Personal Blog Management Tool
+
+A CLI tool for managing personal blog posts, building static content and deploying to GitHub.
+
+Available Commands:
+  init [blog_name]    Create a new blog and configure bib
+  post new [title]    Create a new blog post
+  post list           List all blog posts
+  post list --draft   List only draft posts
+  page new [title]    Create a new page
+  build               Build all posts and pages to static HTML files
+  serve [port]        Start local development server (default port: 8308)
+
+Usage Examples:
+  bib init &quot;my-awesome-blog&quot;
+  bib init &quot;my-blog&quot; --demo
+  bib post new &quot;My First Post&quot;
+  bib post new &quot;My Post&quot; --demo
+  bib post list
+  bib post list --draft
+  bib page new &quot;Contact&quot;
+  bib build
+  bib serve
+  bib serve 3000
+
+Use 'bib [command] --help' for more information about a command.
+</code></pre>
+
+<p>As I mentioned above, more to come, but not that much more 👷‍♂️.</p>
+
+<p>And that is it for now.</p>
+
+
+            
+            <section class="suggested-post">
+                <h3>Suggested Reading</h3>
+                
+                  There are no more posts with 
+                    
+                      <strong>bib</strong>
+                    
+                  tag. But hey, read this one. Should be okay.
+                
+                <div class="suggested-post-card">
+                    <h4><a href="llms-suck-the-fun-out-of-coding.html">LLMs suck the fun out of coding</a></h4>
+                    <div class="post-meta">
+                        <time>October 31, 2025</time>
+                        <div class="post-tags">
+                            <a href="tag-ai.html" class="tag">AI</a><a href="tag-llm.html" class="tag">LLM</a><a href="tag-thoughts.html" class="tag">thoughts</a><a href="tag-junior.html" class="tag">junior</a>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+
+Today I stumbled upon [this](https://www.youtube.com/watch?v=AEybWzeAkho) video. Right at the beginning, it mentions “Don’t rewrite, reinvent.�...</p>
+                </div>
+            </section>
+            
+        </article>
+    </main>
+</body>
+</html>
