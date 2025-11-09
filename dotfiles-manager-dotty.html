@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dotfiles manager Dotty</title>
+    <meta name="description" content="Dotfiles manager Dotty">
+    <meta name="author" content="Jan Charamza">
+    <meta name="date" content="2025-11-09T09:24:14&#43;01:00">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟣</text></svg>">
+</head>
+<body class="page-blog-post">
+    
+    
+    <video autoplay muted loop playsinline class="video-background">
+        <source src="wallpapers/momo-smoking-cyberpunk-city-last-origin-pixel-moewalls-com.mp4" type="video/mp4">
+        <source src="wallpapers/momo-smoking-cyberpunk-city-last-origin-pixel-moewalls-com.webm" type="video/webm">
+        
+    </video>
+    
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+
+    <nav class="menu">
+        <label for="menu-toggle" class="menu-button">☰</label>
+        <ul>
+            
+            <li><a href="index.html" class="nav-index">Index</a></li>
+            
+            <li><a href="projects.html" class="nav-projects">Projects</a></li>
+            
+            <li><a href="todo.html" class="nav-todo">Todo</a></li>
+            
+            <li><a href="contact.html" class="nav-contact">Contact</a></li>
+            
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <div class="post-meta">
+                Published on November 9, 2025
+                <div class="post-tags">
+                    <a href="tag-go.html" class="tag">go</a><a href="tag-wip.html" class="tag">wip</a><a href="tag-code.html" class="tag">code</a><a href="tag-scrappy-fiddles.html" class="tag">scrappy fiddles</a>
+                </div>
+            </div>
+            <h1 id="dotfiles-manager-dotty">Dotfiles manager Dotty</h1>
+
+<p>Started to work on my custom dotfiles manager. I&rsquo;ve learned I very often appreciate imperfect custom software based on my current workflow
+and knowledge rather than full featured applications which I repeatedly need to learn how to use. It just starts from little
+scripts and ends with anything I am capable of creating myself.</p>
+
+<p>And this could also be a script probably, but whatever, I am learning Go, so why not writing it in Go.</p>
+
+<h2 id="dotty">Dotty</h2>
+
+<p>So it will look something like this:</p>
+
+<pre><code>Dotty manages your dotfiles by syncing them with a Git repository.
+
+Configuration file is located at ~/.config/dotty/config.toml and contains:
+  - repo_url: URL to your GitHub repository
+  - dotfiles: List of file paths to manage
+
+Example configuration:
+  repo_url = &quot;https://github.com/username/dotfiles&quot;
+  dotfiles = [
+    &quot;~/.bashrc&quot;,
+    &quot;~/.vimrc&quot;,
+    &quot;~/.config/nvim/init.vim&quot;
+  ]
+
+Usage:
+  dotty [flags]
+  dotty [command]
+
+Available Commands:
+  add         Add dotfiles to manage
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  init        Initialize dotty configuration
+  remove      Remove dotfiles from management
+  status      Show status of managed dotfiles
+  sync        Sync dotfiles with repository
+
+Flags:
+  -c, --config string   config file (default is $HOME/.config/dotty/config.toml)
+  -h, --help            help for dotty
+  -v, --verbose         verbose output
+
+Use &quot;dotty [command] --help&quot; for more information about a command.
+</code></pre>
+
+<p>Not everything is implemented yet. You can check the repo, it&rsquo;s listed in <a href="projects.html" target="_blank">Projects</a>.</p>
+
+
+            
+            <section class="suggested-post">
+                <h3>Suggested Reading</h3>
+                
+                <p>Here's another post with <strong>go</strong> tag. You might like it:</p>
+                
+                <div class="suggested-post-card">
+                    <h4><a href="i-wrote-my-own-static-site-builder-in-go.html">I wrote my own static site builder in Go</a></h4>
+                    <div class="post-meta">
+                        <time>October 29, 2025</time>
+                        <div class="post-tags">
+                            <a href="tag-bib.html" class="tag">bib</a><a href="tag-init.html" class="tag">init</a><a href="tag-go.html" class="tag">go</a>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+
+**I know, another one!**
+
+I wanted to start learning [Go](https://go.dev), and I wished for a *stupid simple* static site builder that I’d underst...</p>
+                </div>
+            </section>
+            
+        </article>
+    </main>
+</body>
+</html>
